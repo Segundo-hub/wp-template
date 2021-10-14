@@ -1,0 +1,14 @@
+// ===========================================================================
+// 	---------- @author Alex Segundo (C) 2021 - @block @variables -------------
+// ===========================================================================
+$max-width: 1400px;
+$xsm: 20em !default; // 320px;
+$sm: 36em !default; // 570px
+$md: 48em !default; // 768px
+$lg: 62em !default; // 992px
+$xl: 75em !default; // 1200px
+$design: 88em !default; //1400px
+$xxl: 96em !default; // 1536px
+$xmonitor: 106em !default; // 1700px
+$tv: 120em !default; // 1926px
+$breakpoints: ( xsmall: $xsm, small: $sm, medium: $md, large: $lg, xlarge: $xl, design: $design, xxlarge: $xxl, monitor: $xmonitor, tv: $tv, ) !default;

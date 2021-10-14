@@ -1,10 +1,10 @@
-{% if menu %}
-	<ul>
+<ul class={{ className }}>
 	{% for item in items %}
-		<li class="{{ item.classes | join(' ') }}">
-			<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
-			{% include "menu.twig" with {'items': item.children} %}
+		<li class="menu__item">
+			<a href="{{ item.link }}" {{ item.id == 335 or item.id == 332 ? 'data-action="open-contact"' : '' }}
+				class="menu__item-link {{ item.current ? 'current' : ''}}">
+				{{ item.title }}
+			</a>
 		</li>
 	{% endfor %}
-	</ul>
-{% endif %}
+</ul>

@@ -1,0 +1,34 @@
+{
+    "name": "init-template",
+    "version": "1.0.0",
+    "description": "Install Wordpress and necesary plugins like ACF",
+    "main": "webpack.mix.js",
+    "scripts": {
+        "dev": "npx mix watch",
+        "build": "npx mix --production"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Segundo-hub/wp-template.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Segundo-hub/wp-template/issues"
+    },
+    "homepage": "https://github.com/Segundo-hub/wp-template#readme",
+    "dependencies": {
+        "laravel-mix": "^6.0.34"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.3.7",
+        "browser-sync": "^2.27.5",
+        "browser-sync-webpack-plugin": "^2.3.0",
+        "laravel-mix-imagemin": "^1.0.3",
+        "postcss-combine-media-query": "^1.0.1",
+        "postcss-sort-media-queries": "^4.1.0",
+        "sass": "^1.43.2",
+        "sass-loader": "^12.1.0"
+    }
+}
