@@ -28,36 +28,8 @@ acf_add_options_page(array(
  *  					Wordpress insert javascript and css files compiling
   ============================================================================================== */
 
-function my_filter_head()
-{
-	remove_action('wp_head', '_admin_bar_bump_cb');
-}
-
-function insert_footer()
-{
-	wp_register_script('vendor', get_template_directory_uri() . '/dist/js/vendor.js', 1, true);
-	// wp_enqueue_script('vendor');
-	wp_register_script('scripts', get_template_directory_uri() . '/dist/js/bundle.js', 1, true);
-	wp_enqueue_script('scripts');
-}
-
-add_action('wp_footer', 'insert_footer');
-
-function header_apply()
-{
-	wp_register_style('main-styles', get_stylesheet_directory_uri() . '/dist/css/bundle.css',  [], 1, 'all');
-	wp_enqueue_style('main-styles');
-	wp_register_style('vendor', get_stylesheet_directory_uri() . '/dist/css/vendor.css',  [], 1, 'all');
-	// wp_enqueue_style('vendor');
-}
-
-add_action('wp_enqueue_scripts', 'header_apply');
-add_action('get_header', 'my_filter_head');
-
-
 Timber::$dirname = array('templates', 'views');
 Timber::$autoescape = false;
-
 
 class StarterSite extends Timber\Site
 {
@@ -71,6 +43,8 @@ class StarterSite extends Timber\Site
 		add_action('init', array($this, 'register_taxonomies'));
 		add_action('init', array($this, 'register_polylang'));
 		add_action('init', array($this, 'remove_editor'));
+		add_action('wp_enqueue_scripts', array($this, 'set_styles'));
+		add_action('wp_footer', array($this, 'set_scripts'));
 
 		parent::__construct();
 	}
@@ -87,9 +61,23 @@ class StarterSite extends Timber\Site
 	public function add_to_context($context)
 	{
 		$context['menu']  = new Timber\Menu();
-		$context['options'] = get_field('option');
+		$context['options'] = get_fields('option');
 		$context['site']  = $this;
 		return $context;
+	}
+
+	public function set_scripts(){
+		wp_register_script('vendor', get_template_directory_uri() . '/dist/js/vendor.js', 1, true);
+		// wp_enqueue_script('vendor');
+		wp_register_script('scripts', get_template_directory_uri() . '/dist/js/bundle.js', 1, true);
+		wp_enqueue_script('scripts');
+	}
+
+	public function set_styles(){
+		wp_register_style('main-styles', get_stylesheet_directory_uri() . '/dist/css/bundle.css',  [], 1, 'all');
+		wp_enqueue_style('main-styles');
+		wp_register_style('vendor', get_stylesheet_directory_uri() . '/dist/css/vendor.css',  [], 1, 'all');
+		// wp_enqueue_style('vendor');
 	}
 
 	public function theme_supports()
