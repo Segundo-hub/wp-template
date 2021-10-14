@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Home - Template*/
+/* Template Name: Home - Template */
 
 $context = Timber::get_context();
 $context['post'] = new TimberPost();
