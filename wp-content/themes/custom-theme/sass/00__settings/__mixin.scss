@@ -1,0 +1,95 @@
+// ===========================================================================
+// 	---------- @author Alex Segundo (C) 2021 - @block @functions -------------
+// ===========================================================================
+@use "sass:math";
+// @parameter {css-unit}
+@function valid-unit($unit) {
+    @if (unit($unit)=='px' or unit($unit)=='em' or unit($unit)=='rem') {
+        @return true;
+    }
+    @else {
+        @return false;
+    }
+}
+
+// @parameter {css-unit}
+@function isCoreMedia($size) {
+    @if map-get($breakpoints, $size) {
+        @return true;
+    }
+    @else {
+        @return false;
+    }
+}
+
+// @parameter {css-unit}
+@function isOtherMedia($size) {
+    @if (type-of($size)==number and valid-unit($size)) {
+        @return true;
+    }
+    @else {
+        @return false;
+    }
+}
+
+// @paramenter {number}
+@function rem($size) {
+    @return math.div($size, 16)+rem;
+}
+
+// ===========================================================================
+// 	---------- @author Alex Segundo (C) 2021 - @block @media ----------------
+// ===========================================================================
+@mixin media-from($width) {
+    @if isCoreMedia($width) {
+        @media screen and(min-width: map-get($breakpoints, $width)) {
+            @content;
+        }
+    }
+    @else if isOtherMedia($width) {
+        @media screen and(min-width: $width) {
+            @content;
+        }
+    }
+    @else {
+        @error "@mixin 'from' a need valid css unit value. Invalid value #{$width}";
+    }
+}
+
+@mixin media-to($width) {
+    @if isCoreMedia($width) {
+        @media screen and(max-width: map-get($breakpoints, $width)) {
+            @content;
+        }
+    }
+    @else if isOtherMedia($width) {
+        @media screen and(max-width: $width) {
+            @content;
+        }
+    }
+    @else {
+        @error "@mixin 'to' a need valid css unit value. Invalid value #{$width}";
+    }
+}
+
+@mixin media-from-to($from, $to) {
+    @if isCoreMedia($from) and isCoreMedia($to) {
+        $f: map-get($breakpoints, $from);
+        $t: map-get($breakpoints, $to);
+        $min: math.min($f, $t);
+        $max: math.max($f, $t);
+        @media screen and(min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    }
+    @else if isOtherMedia($from) and isOtherMedia($to) {
+        $min: math.min($from, $to);
+        $max: math.max($from, $to);
+        @media screen and(min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    }
+    @else {
+        @error "@mixin 'from-to' a need valid css unit value. Invalid '#{$width}'";
+    }
+}

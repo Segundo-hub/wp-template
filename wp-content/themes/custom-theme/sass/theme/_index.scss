@@ -1,0 +1,50 @@
+// ====================================================================
+// ======================   @SASS PAGE--THEME  ========================
+// ====================================================================
+:root {
+    --color-brand: #0000DB;
+    --color-second: #2EF8A0;
+    --light: #fff;
+    --light-alpha: rgba(255, 255, 255, 0.5);
+    --grey-700: #747474;
+    --grey-800: #606060;
+    --grey-900: #231F20;
+    --green-primary: #46443B;
+    --green-brand: #3A382E;
+    --green-dark: #24231C;
+    --black: #000000;
+}
+
+:root {
+    --font-rubik: 'Rubik';
+    --font-roboto: 'Roboto';
+    --font-paragraph: 'Roboto';
+}
+
+:root {
+    --easing: cubic-bezier(.58, .46, .68, 1.22);
+    --block-spacing: 3rem;
+    --grid-gap: 2rem;
+    @include media-from(monitor) {
+        --max-width: 1440px;
+    }
+    @include media-from(121em) {
+        --max-width: 1550px;
+    }
+}
+
+// ====================================================================
+// =========================   @TYPOGRAPHY  ===========================
+// ====================================================================
+:root {
+    --theme-font-size: 62.5%;
+    --base-font-size: 1.6rem;
+    --theme-font-family: "Roboto";
+    --optonal-font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    @include media-to(xsmall) {
+        --theme-font-size: 50%;
+    }
+    @include media-from(140em) {
+        --theme-font-size: 85%;
+    }
+}

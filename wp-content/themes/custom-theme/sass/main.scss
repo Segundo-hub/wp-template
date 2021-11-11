@@ -1,17 +1,40 @@
+/**
+*   Estructure based in  ATOMIC DESIGN  
+*   https://bradfrost.com/blog/post/atomic-web-design/
+*/
+
 // ====================================================================
 // =====================  @SASS @import files   =======================
 // ====================================================================
 
+/* ===================  @SASS @import settings   ====================== */
+
 @import "00__settings/index";
+
+/* ==============  @SASS @import website theme    ====================== */
+
+@import "theme/index";
+
+/* ===================    @SASS @import base     ====================== */
 
 @import "01__base/index";
 
+/* ===================    @SASS @import atoms    ====================== */
+
 @import "02__atom/index";
+
+/* ===================  @SASS @import molecules  ====================== */
 
 @import "03__molecule/index";
 
+/* ===================  @SASS @import organism   ====================== */
+
 @import "04__organism/index";
 
+/* ===================  @SASS @import templates  ====================== */
+
 @import "05__template/index";
+
+/* ===================    @SASS @import pages    ====================== */
 
 @import "06__page/index";

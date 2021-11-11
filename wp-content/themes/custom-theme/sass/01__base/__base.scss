@@ -1,0 +1,110 @@
+@use "sass:math";
+html {
+    font-size: var(--theme-font-size);
+    overflow: hidden auto;
+}
+
+body {
+    font-size: var(--base-font-size);
+    font-family: var(--theme-font-family), var(--optional-font-family);
+    background-color: red;
+}
+
+p {
+    font: normal 300 1.7rem / 1.55 var(--font-paragraph);
+    color: var(--grey-800);
+    .dark & {
+        color: var(--light);
+    }
+    @include media-from-to(medium, large) {
+        font-size: 1.6rem;
+    }
+    @include media-from(medium) {
+        font-size: 1.5rem;
+        line-height: 1.6;
+    }
+    @include media-from(design) {
+        font-size: 1.6rem;
+        line-height: 1.75;
+    }
+    @include media-from(monitor) {
+        font-size: 1.9rem;
+    }
+}
+
+a {
+    font-family: inherit;
+    line-height: 0;
+}
+
+address {
+    font-style: normal;
+    font-family: var(--font-roboto);
+}
+
+strong {
+    font-family: var(--font-roboto);
+}
+
+button,
+input {
+    outline: none;
+    border: none;
+}
+
+button,
+input[type="submit"] {
+    cursor: pointer;
+}
+
+textarea {
+    outline: none;
+    resize: none;
+    border: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-rubik);
+    color: var(--grey-900);
+}
+
+picture,
+figure {
+    display: block;
+    line-height: 0;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+input,
+textarea {
+    &::placeholder {
+        font-family: var(--font-roboto);
+        font-size: inherit;
+        color: var(--grey-700);
+    }
+}
+
+select {
+    outline: none;
+    border: none;
+}
+
+li {
+    list-style: none;
+}
+
+[data-action] {
+    cursor: pointer;
+}
+
+::selection {
+    background-color: var(--select-background);
+    color: var(--select-color);
+}
